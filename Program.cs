@@ -1,61 +1,60 @@
-﻿
-namespace Project2
+namespace MakhshafAssignments
 {
-    internal class CarParkingSystem
+    internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Car Parking system");
+            Console.WriteLine("******---------Welcome to Fare Management System-----------******");
 
-            Console.WriteLine("How many cars are parked?");
-            int amount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("How many vehicles do you want to calculate the fare?");
+            int quantity = Convert.ToInt32(Console.ReadLine());
 
 
-            for (int i = 0; i < amount; i++)
+            for(int i = 0;  i < quantity; i++)
             {
                 Console.WriteLine("Please Enter Vehicle Type. For Example: Car");
-                string typeofVehicle = Console.ReadLine();
+                string vehicleType = Console.ReadLine();
 
                 Console.WriteLine("Please Enter Parked Hours");
                 double hours = Convert.ToDouble(Console.ReadLine());
 
                 double fare = 0.0;
-                if (typeofVehicle == "Bike")
+                if (vehicleType == "Bike")
                 {
-                    fare = BikeFare(hours);
+                    fare = GetBikeFare(hours);
                 }
 
-                if (typeofVehicle == "Car")
+                if (vehicleType == "Car")
                 {
-                    fare = CarFare(hours);
+                    fare = GetCarFare(hours);
                 }
 
-                if (typeofVehicle == "Bus")
+                if (vehicleType == "Bus")
                 {
-                    fare = BusFare(hours);
+                    fare = GetBusFare(hours);
                 }
 
-                Console.WriteLine("Total Fare for this " + typeofVehicle + " is: " + fare);
+                Console.WriteLine("Total Fare for this " + vehicleType + " is: " + fare);
             }
 
             Console.ReadKey();
         }
 
-        public static double BikeFare(double hours)
+        public static double GetBikeFare(double hours)
         {
             double result;
 
             if (hours <= 3)
                 result = 2.00;
-            else if (hours >= 11)
+            else if (hours >= 19)
                 result = 10.00;
             else
                 result = 2.00 + (hours - 3) * 0.50;
             return result;
         }
+        
 
-
-        public static double CarFare(double hours)
+        public static double GetCarFare(double hours)
         {
             var test = 4.00 + (hours - 3) * 1.00;
 
@@ -63,20 +62,20 @@ namespace Project2
 
             if (hours <= 3)
                 result = 4.00;
-            else if (hours >= 11)
+            else if (hours >= 19)
                 result = 20.00;
             else
                 result = 4.00 + (hours - 3) * 1.00;
             return result;
         }
 
-        public static double BusFare(double hours)
+        public static double GetBusFare(double hours)
         {
             double result;
 
             if (hours <= 3)
                 result = 6.00;
-            else if (hours >= 11)
+            else if (hours >= 19)
                 result = 30.00;
             else
                 result = 6.00 + (hours - 3) * 1.50;
